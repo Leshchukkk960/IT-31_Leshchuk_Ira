@@ -1,0 +1,26 @@
+<section class="products">
+  <h2>Наші товари</h2>
+
+  <div class="product-list">
+    <app-product-card
+      [name]="productName"
+      [price]="productPrice"
+      [description]="productDescription"
+      (buy)="onBuy($event)">
+    </app-product-card>
+
+    <app-product-card
+      name="Смартфон Samsung"
+      [price]="18000"
+      description="Сучасний смартфон із якісною камерою."
+      (buy)="onBuy($event)">
+    </app-product-card>
+
+    <app-product-card
+      name="Навушники Sony"
+      [price]="4500"
+      description="Бездротові навушники з якісним звуком."
+      (buy)="onBuy($event)">
+    </app-product-card>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+<h1>Список фільмів</h1>
+
+<div *ngFor="let movie of movies">
+
+  <h2>{{ movie.title }}</h2>
+
+  <p>Рік: {{ movie.year }}</p>
+
+  <p>Рейтинг: {{ movie.rating }}/10</p>
+
+  <a [routerLink]="['/movie', movie.id]">
+    Переглянути деталі
+  </a>
+
+  <hr>
+
+</div>

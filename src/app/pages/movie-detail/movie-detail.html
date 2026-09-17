@@ -1,0 +1,17 @@
+<h1>Деталі фільму</h1>
+
+@if (movie) {
+
+  <h2>{{ movie.title }}</h2>
+
+  <p>Рік: {{ movie.year }}</p>
+
+  <p>Рейтинг: {{ movie.rating }}/10</p>
+
+} @else {
+
+  <p>Фільм не знайдено</p>
+
+}
+
+<a routerLink="/movies">Назад до списку</a>

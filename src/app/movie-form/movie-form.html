@@ -1,0 +1,83 @@
+<h2>Додати фільм</h2>
+
+<form #form="ngForm" (ngSubmit)="addMovie(form)">
+
+  <label>Назва фільму:</label>
+  <input
+    type="text"
+    name="title"
+    [(ngModel)]="movie.title"
+    #title="ngModel"
+    required
+    minlength="3"
+    maxlength="50"
+  >
+
+  <div *ngIf="title.invalid && title.touched">
+    <p *ngIf="title.errors?.['required']">Введіть назву фільму</p>
+    <p *ngIf="title.errors?.['minlength']">
+      Назва повинна містити мінімум 3 символи
+    </p>
+    <p *ngIf="title.errors?.['maxlength']">
+      Назва повинна містити максимум 50 символів
+    </p>
+  </div>
+
+
+  <label>Режисер:</label>
+  <input
+    type="text"
+    name="director"
+    [(ngModel)]="movie.director"
+    #director="ngModel"
+    required
+    minlength="3"
+    maxlength="40"
+  >
+
+  <div *ngIf="director.invalid && director.touched">
+    <p *ngIf="director.errors?.['required']">Вкажіть режисера</p>
+    <p *ngIf="director.errors?.['minlength']">
+      Ім'я режисера повинно містити мінімум 3 символи
+    </p>
+    <p *ngIf="director.errors?.['maxlength']">
+      Ім'я режисера повинно містити максимум 40 символів
+    </p>
+  </div>
+
+
+  <label>Опис:</label>
+  <textarea
+    name="description"
+    [(ngModel)]="movie.description"
+    #description="ngModel"
+    required
+    minlength="10"
+    maxlength="200"
+  ></textarea>
+
+  <div *ngIf="description.invalid && description.touched">
+    <p *ngIf="description.errors?.['required']">Опис обов'язковий</p>
+    <p *ngIf="description.errors?.['minlength']">
+      Опис повинен містити мінімум 10 символів
+    </p>
+    <p *ngIf="description.errors?.['maxlength']">
+      Опис повинен містити максимум 200 символів
+    </p>
+  </div>
+
+
+  <button type="submit" [disabled]="form.invalid">
+    Додати фільм
+  </button>
+
+</form>
+
+
+<h2>Додані фільми</h2>
+
+<div *ngFor="let movie of movies">
+  <h3>{{ movie.title }}</h3>
+  <p><strong>Режисер:</strong> {{ movie.director }}</p>
+  <p><strong>Опис:</strong> {{ movie.description }}</p>
+</div>

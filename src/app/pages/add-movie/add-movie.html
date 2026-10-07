@@ -1,0 +1,77 @@
+<h1>Додати новий фільм</h1>
+
+<form #movieForm="ngForm" (ngSubmit)="addMovie()" novalidate>
+
+  <div>
+    <label for="title">Назва фільму:</label>
+    <input
+      id="title"
+      name="title"
+      type="text"
+      [(ngModel)]="title"
+      #titleField="ngModel"
+      required
+      minlength="3"
+      maxlength="50"
+    >
+
+    @if (titleField.invalid && titleField.touched) {
+      <p>
+        Назва обов'язкова та повинна містити від 3 до 50 символів.
+      </p>
+    }
+  </div>
+
+  <br>
+
+  <div>
+    <label for="director">Режисер:</label>
+    <input
+      id="director"
+      name="director"
+      type="text"
+      [(ngModel)]="director"
+      #directorField="ngModel"
+      required
+      minlength="3"
+      maxlength="50"
+    >
+
+    @if (directorField.invalid && directorField.touched) {
+      <p>
+        Ім'я режисера обов'язкове та повинно містити від 3 до 50 символів.
+      </p>
+    }
+  </div>
+
+  <br>
+
+  <div>
+    <label for="description">Опис:</label>
+    <textarea
+      id="description"
+      name="description"
+      [(ngModel)]="description"
+      #descriptionField="ngModel"
+      required
+      minlength="10"
+    ></textarea>
+
+    @if (descriptionField.invalid && descriptionField.touched) {
+      <p>
+        Опис обов'язковий та повинен містити щонайменше 10 символів.
+      </p>
+    }
+  </div>
+
+  <br>
+
+  <button type="submit" [disabled]="movieForm.invalid">
+    Додати фільм
+  </button>
+
+</form>
+
+<br>
+
+<a routerLink="/movies">← Повернутися до каталогу</a>

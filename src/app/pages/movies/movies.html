@@ -1,0 +1,23 @@
+<h1>Каталог фільмів</h1>
+
+<a routerLink="/movies/add">Додати новий фільм</a>
+
+<div>
+  @for (movie of movies; track movie.id) {
+    <article>
+      <h2>{{ movie.title }}</h2>
+
+      <p><strong>Режисер:</strong> {{ movie.director }}</p>
+
+      <p>{{ movie.description }}</p>
+
+      <a [routerLink]="['/movie', movie.id]">
+        Переглянути деталі
+      </a>
+    </article>
+  }
+</div>
+
+<br>
+
+<a routerLink="/">На головну</a>
